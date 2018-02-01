@@ -29,7 +29,6 @@ WITH base
                 gd.mi,
                 DATEPART(dw, gd.mi) dw
          FROM getdates gd
-              JOIN base b ON LEFT(CONVERT( NVARCHAR(10), gd.mi, 121), 7) = LEFT(CONVERT(NVARCHAR(10), b.m, 121), 7)
      ) p PIVOT(COUNT(mi) FOR dw IN([1],
                                    [2],
                                    [3],
