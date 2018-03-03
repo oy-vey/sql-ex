@@ -4,8 +4,8 @@ FROM
 (
     SELECT ship,
            PATINDEX('% %', ship) f,
-           LEN(REPLACE(ship, ' ', '_'))-PATINDEX('%[_]%', REVERSE(REPLACE(ship, ' ', '_')))+1 l,
-           LEN(REPLACE(ship, ' ', '_')) ln,
+           DATALENGTH(ship)-PATINDEX('% %', REVERSE(ship)) + 1 l,
+           DATALENGTH(ship) ln,
            result
     FROM outcomes
 ) a
